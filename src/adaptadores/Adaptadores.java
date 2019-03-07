@@ -9,6 +9,7 @@ public class Adaptadores {
         player.play("file.mp4");
         player = new FormatAdapter(new VLC());
         player.play("file.avi");
+        
     }
 
     private static class FormatAdapter implements MediaPlayer {
