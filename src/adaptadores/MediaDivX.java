@@ -10,5 +10,6 @@ package adaptadores;
  * @author clamascabaleiro
  */
 public interface MediaDivX {
+
     void playFilm(String filename);
 }
