@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snake;
+package SnakeGame;
 
+import Fruta.FruitClass;
+import claseSnake.SnakeClass;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -12,8 +14,6 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -31,10 +31,6 @@ public class Snake extends JFrame implements KeyListener {
     private int Score; // Variable para almacenar la puntuación
     private long goal;
     private int velocidad;// Variable para la velocidad
-
-    public static void main(String[] args) {
-        new Snake();
-    }
 
     public Snake() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
