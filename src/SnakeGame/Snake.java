@@ -172,7 +172,8 @@ public class Snake extends JFrame implements KeyListener {
                 break;
             case KeyEvent.VK_E:
                 System.exit(0);
-
+                break;
+                
         }
     }
 
