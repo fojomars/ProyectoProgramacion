@@ -15,19 +15,17 @@ import java.util.ArrayList;
  */
 public class SnakeClass {
     
-    private ArrayList<Point> largo = new ArrayList<Point>();
+    private ArrayList<Point> serpiente = new ArrayList<Point>();
     private int snakeX = 0;
     private int snakeY=0;
-    
-    
+
+
     public SnakeClass(){
-        largo.add(new Point(20,15));
+        serpiente.add(new Point(20,15));
     }
 
-
-    
     public ArrayList<Point> getLargo(){
-        return largo;
+        return serpiente;
     }
 
 /**
@@ -36,25 +34,25 @@ public class SnakeClass {
  */
     
     public void drawSnake(Graphics g){
-        for(int i = 0; i < largo.size()-1; i++){
+        for(int i = 0; i < serpiente.size()-1; i++){
             g.setColor(Color.GREEN);
-            Point p = largo.get(i);
+            Point p = serpiente.get(i);
             g.fillRect(p.x*20, p.y*20,20,20);
         }
     }
     
     
     public void moveSnake(){
-        for(int i = largo.size()-1; i>0;i--){
-            largo.get(i).setLocation(largo.get(i-1));
+        for(int i = serpiente.size()-1; i>0;i--){
+            serpiente.get(i).setLocation(serpiente.get(i-1));
         }
-        largo.get(0).x +=snakeX;
-        largo.get(0).y +=snakeY;
+        serpiente.get(0).x +=snakeX;
+        serpiente.get(0).y +=snakeY;
     }
     
     
     public void crecimientoSnake(){
-        largo.add(new Point());
+        serpiente.add(new Point());
     }
     
     public void direccion(String d){
@@ -77,6 +75,7 @@ public class SnakeClass {
                 break;
         }
     }
+    
     
     
 }

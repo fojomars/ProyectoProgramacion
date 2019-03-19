@@ -5,7 +5,8 @@
  */
 package snake;
 
-import SnakeGame.Snake;
+import SnakeGame.SnakeGame;
+import java.io.IOException;
 
 /**
  *
@@ -13,8 +14,8 @@ import SnakeGame.Snake;
  */
 public class StartGame {
 
-    public static void main(String[] args) {
-        new Snake();
+    public static void main(String[] args) throws IOException {
+        SnakeGame game = new SnakeGame();
     }
     
 }

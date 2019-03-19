@@ -6,6 +6,8 @@
 package SnakeGame;
 
 import Fruta.FruitClass;
+import Utilidades.pedirDatos;
+import claseSnake.Player;
 import claseSnake.SnakeClass;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +16,10 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -21,7 +27,7 @@ import javax.swing.JOptionPane;
  *
  * @author christian and fred
  */
-public class Snake extends JFrame implements KeyListener {
+public class SnakeGame extends JFrame implements KeyListener {
 // entendemmos el jframe àra crear la ventana del juego y keyListener para poder controlarlo con teclado
 
     private int windowWidth = 800;// Variable para modificar el ancho de la ventana
@@ -29,10 +35,18 @@ public class Snake extends JFrame implements KeyListener {
     private SnakeClass snake;
     private FruitClass fruit;
     private int Score; // Variable para almacenar la puntuación
+    private int maxScore = 200;
     private long goal;
     private int velocidad;// Variable para la velocidad
+    private String usuario;
 
-    public Snake() {
+    private String name;
+    public JFrame jframe;
+    public Player miPlayer;
+    ArrayList<String> lista = new ArrayList<String>();
+    
+    
+    public SnakeGame() throws IOException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(windowWidth, windowHeight);
         this.setResizable(false);
@@ -48,11 +62,52 @@ public class Snake extends JFrame implements KeyListener {
             juego();
             sleep();
         }
-
+    }
+    
+    public void nick(){
+        usuario = pedirDatos.pedirString("Introduce tu nick: ");
+        JOptionPane.showMessageDialog(jframe, name);
+    }
+    
+    public void saveScore() throws IOException {
+        int text = JOptionPane.showConfirmDialog(jframe, "La puntacion es: " + Score);
+        if(text == JOptionPane.YES_OPTION){
+            lista.add(name);
+            lista.add(Integer.toString(Score));
+            
+            for (String lista2 : lista){
+                FileWriter fichero = new FileWriter("puntuacion.txt");
+                PrintWriter pw = null;
+                
+                try{
+                    pw = new PrintWriter(fichero,true);
+                    pw.println("Nombre,");
+                    for (String x: lista){
+                        pw.print( x + ",");
+                    }
+                    pw.println(",Score");
+                    pw.close();
+                }catch (Exception e){
+                    System.out.println("Error al guardar la puntación" + e.getMessage());
+                } finally {
+                    try{
+                        if(null != fichero);
+                    } catch (Exception e2){
+                        System.out.println("Error al guardar");
+                    }
+                }
+                break;
+            }
+        }
+        if (text == JOptionPane.CANCEL_OPTION){
+            JOptionPane.showConfirmDialog(jframe, "La puntación no se guardará");      
+        }
+        if(text == JOptionPane.CLOSED_OPTION){
+            System.exit(text);
+        }
     }
 
     public void menu() {
-
         String[] opcion = {"INICIAR JUEGO ", "SALIR"}; // Iniciar partida o salir
         int start = JOptionPane.showOptionDialog(null, "Establecer Dificultad", null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcion, null);
 
@@ -74,7 +129,6 @@ public class Snake extends JFrame implements KeyListener {
                     default:
                         break;
                 }
-
                 break;
             case 1 :
                 System.exit(0);
@@ -85,14 +139,13 @@ public class Snake extends JFrame implements KeyListener {
 
     }
 
-    private void inicializoObjetos() {
+    private void inicializoObjetos() throws IOException {
         menu();
+        
         snake = new SnakeClass();
         snake.crecimientoSnake();
         fruit = new FruitClass();
         fruit.newFruit();
-        Score = 0;
-
     }
 
     private void dibujoPantalla() {
@@ -119,21 +172,24 @@ public class Snake extends JFrame implements KeyListener {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    private void chequearColision() {
+    private void chequearColision() throws IOException {
         if (snake.getLargo().get(0).equals(fruit.getFruit())) {
             fruit.newFruit();
             snake.crecimientoSnake();
             Score += 10;
         }
 
-        if (snake.getLargo().get(0).x < 0 || snake.getLargo().get(0).x > 39
-                || snake.getLargo().get(0).y < 1 || snake.getLargo().get(0).y > 29) {
+        else if (snake.getLargo().get(0).x < 0 || snake.getLargo().get(0).x > 39 || snake.getLargo().get(0).y < 1 || snake.getLargo().get(0).y > 29) {
             inicializoObjetos();
+            saveScore();
+            
         }
 
-        for (int n = 1; n < snake.getLargo().size(); n++) {
-            if (snake.getLargo().get(0).equals(snake.getLargo().get(n)) && snake.getLargo().size() > 2) {
+        for (int x = 1; x < snake.getLargo().size(); x++) {
+            if (snake.getLargo().get(0).equals(snake.getLargo().get(x)) && snake.getLargo().size() > 2) {
                 inicializoObjetos();
+                saveScore();
+                
             }
         }
     }
@@ -148,10 +204,17 @@ public class Snake extends JFrame implements KeyListener {
     private void sleep() {
         goal = (System.currentTimeMillis() + velocidad);
         while (System.currentTimeMillis() < goal) {
-
+            
         }
     }
-
+    
+    
+    private void juego() throws IOException {
+        snake.moveSnake();
+        chequearColision();
+        dibujoPantalla();
+    }
+    
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -170,20 +233,13 @@ public class Snake extends JFrame implements KeyListener {
             case KeyEvent.VK_RIGHT:
                 snake.direccion("derecha");
                 break;
-            case KeyEvent.VK_E:
+            case KeyEvent.VK_SPACE:
                 System.exit(0);
                 break;
                 
         }
     }
 
-    private void juego() {
-
-        snake.moveSnake();
-        chequearColision();
-        dibujoPantalla();
-
-    }
 
     @Override
     public void keyTyped(KeyEvent ke) {
