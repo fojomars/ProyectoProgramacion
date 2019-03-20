@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="StartGame" package="snake" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SnakeClass" package="claseSnake" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="serpiente" type="ArrayList&lt;Point&gt;" visibility="private"/>
+        <Field name="snakeX" type="int" visibility="private"/>
+        <Field name="snakeY" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getLargo" returnType="ArrayList&lt;Point&gt;" visibility="public"/>
+        <Method name="drawSnake" returnType="void" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="moveSnake" returnType="void" visibility="public"/>
+        <Method name="crecimientoSnake" returnType="void" visibility="public"/>
+        <Method name="direccion" returnType="void" visibility="public">
+          <Argument type="String" name="d"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Player" package="claseSnake" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="score" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="score"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getScore" returnType="int" visibility="public"/>
+        <Method name="setScore" returnType="void" visibility="public">
+          <Argument type="int" name="score"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Player" name="o"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SnakeGame" package="SnakeGame" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="windowWidth" type="int" visibility="private"/>
+        <Field name="windowHeight" type="int" visibility="private"/>
+        <Field name="snake" type="SnakeClass" visibility="private"/>
+        <Field name="fruit" type="FruitClass" visibility="private"/>
+        <Field name="Score" type="int" visibility="private"/>
+        <Field name="goal" type="long" visibility="private"/>
+        <Field name="velocidad" type="int" visibility="private"/>
+        <Field name="maxScore" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="jframe" type="JFrame" visibility="public"/>
+        <Field name="miPlayer" type="Player" visibility="public"/>
+        <Field name="lista" type="ArrayList&lt;String&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="saveScore" returnType="void" visibility="public"/>
+        <Method name="menu" returnType="void" visibility="public"/>
+        <Method name="inicializoObjetos" returnType="void" visibility="private"/>
+        <Method name="dibujoPantalla" returnType="void" visibility="private"/>
+        <Method name="chequearColision" returnType="void" visibility="private"/>
+        <Method name="muestroPuntos" returnType="void" visibility="private">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="sleep" returnType="void" visibility="private"/>
+        <Method name="juego" returnType="void" visibility="private"/>
+        <Method name="keyPressed" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+        <Method name="keyTyped" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="ke"/>
+        </Method>
+        <Method name="keyReleased" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="ke"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FruitClass" package="Fruta" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="random" type="Random" visibility="private"/>
+        <Field name="fruit" type="Point" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="newFruit" returnType="void" visibility="public"/>
+        <Method name="drawFruit" returnType="void" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="getFruit" returnType="Point" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="pedirDatos" package="Utilidades" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="enteiro" returnType="int" visibility="public" isStatic="true">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="decimal" returnType="float" visibility="public" isStatic="true">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="pedirString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="msg"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="claseSnake.Player" target="claseSnake.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fruit" source="SnakeGame.SnakeGame" target="Fruta.FruitClass" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="snake" source="SnakeGame.SnakeGame" target="claseSnake.SnakeClass" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="miPlayer" source="SnakeGame.SnakeGame" target="claseSnake.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
