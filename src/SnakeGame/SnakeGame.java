@@ -81,14 +81,14 @@ public class SnakeGame extends JFrame implements KeyListener {
                 
                 try{
                     pw = new PrintWriter(fichero,true);
-                    pw.println("Nombre,");
+                    pw.print("Nombre = ");
                     for (String x: lista){
                         pw.print( x + ",");
                     }
-                    pw.println(",Score");
+                    pw.print(",Score = ");
                     pw.close();
                 }catch (Exception e){
-                    System.out.println("Error al guardar la puntación" + e.getMessage());
+                    System.out.println("Error al guardar la puntuación" + e.getMessage());
                 } finally {
                     try{
                         if(null != fichero);
