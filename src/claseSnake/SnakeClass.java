@@ -11,7 +11,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 /**
  *
- * @author fojomars
+ * @author christian and fred
  */
 public class SnakeClass {
     

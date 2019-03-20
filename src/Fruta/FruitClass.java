@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  *
- * @author fojomars
+ * @author christian and fred
  */
 public class FruitClass {
 

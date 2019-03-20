@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  *
- * @author junio
+ * @author christian and fred
  */
 public class StartGame {
 
