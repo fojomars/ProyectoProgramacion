@@ -126,7 +126,7 @@ public class Tabla extends javax.swing.JFrame {
         panel.add(bBorrar);
         bBorrar.setBounds(470, 680, 110, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Joc-nou-Snake-Facebook-messenger-2017-1.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Snake.jpg"))); // NOI18N
         panel.add(jLabel2);
         jLabel2.setBounds(-100, 0, 830, 530);
 
