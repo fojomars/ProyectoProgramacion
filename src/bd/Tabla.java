@@ -126,9 +126,10 @@ public class Tabla extends javax.swing.JFrame {
         panel.add(bBorrar);
         bBorrar.setBounds(470, 680, 110, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Snake.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\junio\\Desktop\\SnakePlay\\ProyectoProgramacion\\src\\Imagen\\Snake.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
         panel.add(jLabel2);
-        jLabel2.setBounds(-100, 0, 830, 530);
+        jLabel2.setBounds(0, 70, 720, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
