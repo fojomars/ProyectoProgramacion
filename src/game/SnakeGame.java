@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SnakeGame;
+package game;
 
 import Fruta.FruitClass;
 import Utilidades.pedirDatos;
@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  * @author christian and fred
  */
 public class SnakeGame extends JFrame implements KeyListener {
-// entendemmos el jframe àra crear la ventana del juego y keyListener para poder controlarlo con teclado
+// entendemmos el jframe hará crear la ventana del juego y keyListener para poder controlarlo con teclado
 
     private int windowWidth = 800;// Variable para modificar el ancho de la ventana
     private int windowHeight = 600;// Variable para modificar el alto de la ventana
@@ -43,7 +43,7 @@ public class SnakeGame extends JFrame implements KeyListener {
     public Player miPlayer;
     ArrayList<String> lista = new ArrayList<String>();
     
-    
+     
     public SnakeGame() throws IOException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(windowWidth, windowHeight);
@@ -95,7 +95,7 @@ public class SnakeGame extends JFrame implements KeyListener {
             JOptionPane.showConfirmDialog(jframe, "La puntación no se guardará");      
         }
         if(text == JOptionPane.CLOSED_OPTION){
-            System.exit(text);
+            System.exit(text);   
         }
     }
 

@@ -5,17 +5,16 @@
  */
 package snake;
 
-import SnakeGame.SnakeGame;
-import java.io.IOException;
 
+import static bd.Metodos.createNewDatabase;
 /**
  *
  * @author christian and fred
  */
 public class StartGame {
 
-    public static void main(String[] args) throws IOException {
-        SnakeGame game = new SnakeGame();
+    public static void main(String[] args) {
+        createNewDatabase("snake.db");
     }
     
 }
