@@ -88,7 +88,7 @@ public class Tabla extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaJugadores);
 
         panel.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 560, 880, 150);
+        jScrollPane1.setBounds(0, 540, 730, 70);
 
         bModificar.setText("MODIFICAR");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,12 +97,12 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bModificar);
-        bModificar.setBounds(410, 770, 110, 40);
+        bModificar.setBounds(320, 680, 110, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("NOMBRE");
         panel.add(jLabel1);
-        jLabel1.setBounds(410, 720, 120, 40);
+        jLabel1.setBounds(310, 630, 120, 40);
 
         bMostrar.setText("MOSTRAR");
         bMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +111,11 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bMostrar);
-        bMostrar.setBounds(110, 740, 180, 40);
+        bMostrar.setBounds(70, 640, 180, 40);
 
         tNombre.setText("adasd");
         panel.add(tNombre);
-        tNombre.setBounds(538, 730, 120, 20);
+        tNombre.setBounds(460, 640, 120, 20);
 
         bBorrar.setText("BORRAR");
         bBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +124,11 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bBorrar);
-        bBorrar.setBounds(550, 770, 110, 40);
+        bBorrar.setBounds(470, 680, 110, 40);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Joc-nou-Snake-Facebook-messenger-2017-1.jpg"))); // NOI18N
         panel.add(jLabel2);
-        jLabel2.setBounds(-80, 0, 960, 550);
+        jLabel2.setBounds(-100, 0, 830, 530);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,14 +136,14 @@ public class Tabla extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
