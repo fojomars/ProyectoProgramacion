@@ -29,6 +29,7 @@ public class Tabla extends javax.swing.JFrame {
     
     public Tabla() {
         initComponents();
+                        
     }
     
     
@@ -246,6 +247,6 @@ public class Tabla extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     private javax.swing.JTextField tNombre;
-    private javax.swing.JTable tablaJugadores;
+    public javax.swing.JTable tablaJugadores;
     // End of variables declaration//GEN-END:variables
 }

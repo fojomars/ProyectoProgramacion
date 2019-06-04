@@ -105,35 +105,13 @@ public class Metodos {
         }
     }
     
-    
-    public String devolverJugador(int id) {
-        String sql = "SELECT id,nombre,puntacion"
-                + " FROM datos WHERE id=?";
-        String resultado = "";
-        try (Connection conn = this.conectar();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                resultado = (rs.getInt("id") + ","
-                        + rs.getString("nombre") + ","
-                        + rs.getInt("puntacion"));
-            }
-            return resultado;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            return resultado;
-        }
-    }
-    
     public void modificarCliente(String nombre, int referencia) {
-        String sql = "UPDATE datos SET nombre = ? , "
+        String sql = "UPDATE datos SET nombre = ? "
                 + "WHERE id = ?";
         try (Connection conn = this.conectar();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nombre);
-            pstmt.setInt(3, referencia);
+            pstmt.setInt(2, referencia);
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Jugador modificado correctamente");
         } catch (SQLException e) {

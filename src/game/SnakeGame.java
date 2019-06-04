@@ -67,7 +67,14 @@ public class SnakeGame extends JFrame implements KeyListener {
     }
     
     public void saveScore(){
- 
+        int fila = t.tablaJugadores.getSelectedRow();
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Intrduzca un id"));
+        String nombre = JOptionPane.showInputDialog("Introduzca un nombre");
+        int puntuacion = maxScore;
+        
+        if(fila == -1){
+            m.insertarJugador(id, nombre, puntuacion);
+        }
     }
 
     public void menu() {
