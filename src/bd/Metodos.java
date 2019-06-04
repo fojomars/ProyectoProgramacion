@@ -13,21 +13,21 @@ import javax.swing.JOptionPane;
  * @author fojomars
  */
 public class Metodos {
-        public static void createNewDatabase(String fileName) {
- 
-        String url = "jdbc:sqlite:" + fileName;
- 
-        try (Connection conn = DriverManager.getConnection(url)) {
-            if (conn != null) {
-                DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
-            }
- 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+//        public static void createNewDatabase(String fileName) {
+// 
+//        String url = "jdbc:sqlite:" + fileName;
+// 
+//        try (Connection conn = DriverManager.getConnection(url)) {
+//            if (conn != null) {
+//                DatabaseMetaData meta = conn.getMetaData();
+//                System.out.println("The driver name is " + meta.getDriverName());
+//                System.out.println("A new database has been created.");
+//            }
+// 
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
     
     /**
      * Este método sirve para conectar con la base de datos
@@ -50,7 +50,7 @@ public class Metodos {
      * Este método crea la tabla en la base de datos. En caso de que ya exista
      * la borra
      */
-    public void crearTablaTienda() {
+    public void crearTablaJugador() {
         String sql1 = "DROP TABLE IF EXISTS datos;\n";
         String sql2 = "CREATE TABLE IF NOT EXISTS datos (\n"
                 + "id integer PRIMARY KEY,\n"
@@ -74,7 +74,7 @@ public class Metodos {
      * @param nombre
      * @param puntuacion
      */
-    public void insertarCliente(int id, String nombre, int puntuacion) {
+    public void insertarJugador(int id, String nombre, int puntuacion) {
         String sql = "INSERT INTO datos(id,nombre,puntuacion) VALUES(?,?,?)";
         try (Connection conn = this.conectar();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -85,6 +85,59 @@ public class Metodos {
             JOptionPane.showMessageDialog(null, "Jugador registrado correctamente");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al introducir los datos o puede que el id ya este selecionado");
+        }
+        
+    }
+    
+    /**
+     * Método para borrar datos de la tabla clientes
+     * @param id
+     */
+    public void borrarJugador(int id) {
+        String sql = "DELETE FROM datos WHERE id=?";
+        try (Connection conn = this.conectar();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cliente eliminado con éxito");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el cliente");
+        }
+    }
+    
+    
+    public String devolverJugador(int id) {
+        String sql = "SELECT id,nombre,puntacion"
+                + " FROM datos WHERE id=?";
+        String resultado = "";
+        try (Connection conn = this.conectar();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                resultado = (rs.getInt("id") + ","
+                        + rs.getString("nombre") + ","
+                        + rs.getInt("puntacion"));
+            }
+            return resultado;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            return resultado;
+        }
+    }
+    
+    public void modificarCliente(String nombre, int referencia) {
+        String sql = "UPDATE datos SET nombre = ? , "
+                + "WHERE id = ?";
+        try (Connection conn = this.conectar();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, nombre);
+            pstmt.setInt(3, referencia);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Jugador modificado correctamente");
+        } catch (SQLException e) {
+            System.out.println("Erro al modificar el jugador");
         }
     }
 }

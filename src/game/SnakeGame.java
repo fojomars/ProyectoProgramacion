@@ -7,6 +7,8 @@ package game;
 
 import Fruta.FruitClass;
 import Utilidades.pedirDatos;
+import bd.Metodos;
+import bd.Tabla;
 import claseSnake.Player;
 import claseSnake.SnakeClass;
 import java.awt.Color;
@@ -22,6 +24,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -42,7 +45,9 @@ public class SnakeGame extends JFrame implements KeyListener {
     public JFrame jframe;
     public Player miPlayer;
     ArrayList<String> lista = new ArrayList<String>();
-    
+    Metodos m = new Metodos();
+    Tabla t = new Tabla();
+    JTable jt = new JTable();
      
     public SnakeGame() throws IOException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,51 +66,21 @@ public class SnakeGame extends JFrame implements KeyListener {
         }
     }
     
-    public void saveScore() throws IOException {
-        int text = JOptionPane.showConfirmDialog(jframe, "¿Quieres guardar la puntuación?");
-        if(text == JOptionPane.YES_OPTION){
-            lista.add(name = pedirDatos.pedirString("Introduce un nick: "));
-            lista.add("Puntuacion = ");
-            
-            for (String lista2 : lista){
-                FileWriter fichero = new FileWriter("puntacion.txt",true);
-                PrintWriter pw = null;
-                
-                try{
-                    pw = new PrintWriter(fichero,true);
-                    pw.print("Nombre = ");
-                    for (String x: lista){
-                        pw.print( x + "  ");
-                    }
-                    pw.println(maxScore);
-                    pw.close();
-                }catch (Exception e){
-                    System.out.println("Error al guardar la puntuación" + e.getMessage());
-                } finally {
-                    try{
-                        if(null != fichero);
-                    } catch (Exception e2){
-                        System.out.println("Error al guardar");
-                    }
-                }
-                break;
-            }
-        }
-        if (text == JOptionPane.CANCEL_OPTION){
-            JOptionPane.showConfirmDialog(jframe, "La puntación no se guardará");      
-        }
-        if(text == JOptionPane.CLOSED_OPTION){
-            System.exit(text);   
-        }
+    public void saveScore(){
+ 
     }
 
     public void menu() {
-        String[] opcion = {"INICIAR JUEGO ", "SALIR"}; // Iniciar partida o salir
+        String[] opcion = {"INICIAR JUEGO ","PUNTACIÓN", "SALIR"}; // Iniciar partida, puntuacion o salir
+        
+
+        
         int start = JOptionPane.showOptionDialog(null, "Establecer Dificultad", null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcion, null);
         maxScore = maxScore + Score;
         switch (start) { //Menu para elegir dificultad
             case 0:
-
+                m.conectar();
+                m.crearTablaJugador();         
                 String[] dificultad = {"Facil", "Medio", "Experto"};
                 int niveles = JOptionPane.showOptionDialog(null, "Elegir nivel", null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, dificultad, null);
                 switch (niveles) {
@@ -123,10 +98,14 @@ public class SnakeGame extends JFrame implements KeyListener {
                 }
                 break;
             case 1 :
+                t.setVisible(true);
+                break;
+            case 2:
                 System.exit(0);
-
+                break;
             default:
                 break;
+
         }
 
     }
