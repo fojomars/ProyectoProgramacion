@@ -56,15 +56,27 @@ public class Tabla extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
+        bBorrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaJugadores = new javax.swing.JTable();
-        bBorrar = new javax.swing.JButton();
         bModificar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tNombre = new javax.swing.JTextField();
         bMostrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panel.setLayout(null);
+
+        bBorrar.setText("BORRAR");
+        bBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBorrarActionPerformed(evt);
+            }
+        });
+        panel.add(bBorrar);
+        bBorrar.setBounds(860, 290, 75, 23);
 
         tablaJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,12 +96,8 @@ public class Tabla extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaJugadores);
 
-        bBorrar.setText("BORRAR");
-        bBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBorrarActionPerformed(evt);
-            }
-        });
+        panel.add(jScrollPane1);
+        jScrollPane1.setBounds(740, 10, 200, 100);
 
         bModificar.setText("MODIFICAR");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,8 +105,14 @@ public class Tabla extends javax.swing.JFrame {
                 bModificarActionPerformed(evt);
             }
         });
+        panel.add(bModificar);
+        bModificar.setBounds(750, 290, 91, 23);
 
         jLabel1.setText("NOMBRE");
+        panel.add(jLabel1);
+        jLabel1.setBounds(750, 220, 42, 14);
+        panel.add(tNombre);
+        tNombre.setBounds(750, 250, 88, 20);
 
         bMostrar.setText("MOSTRAR");
         bMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,51 +120,25 @@ public class Tabla extends javax.swing.JFrame {
                 bMostrarActionPerformed(evt);
             }
         });
+        panel.add(bMostrar);
+        bMostrar.setBounds(790, 130, 110, 20);
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bModificar)
-                    .addComponent(bBorrar)
-                    .addComponent(bMostrar))
-                .addGap(0, 43, Short.MAX_VALUE))
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(bMostrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bBorrar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Christian\\Documents\\Joc-nou-Snake-Facebook-messenger-2017-1.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        panel.add(jLabel2);
+        jLabel2.setBounds(0, -10, 940, 570);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -244,6 +232,7 @@ public class Tabla extends javax.swing.JFrame {
     private javax.swing.JButton bModificar;
     private javax.swing.JButton bMostrar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     private javax.swing.JTextField tNombre;
