@@ -56,27 +56,18 @@ public class Tabla extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
-        bBorrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaJugadores = new javax.swing.JTable();
         bModificar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tNombre = new javax.swing.JTextField();
         bMostrar = new javax.swing.JButton();
+        tNombre = new javax.swing.JTextField();
+        bBorrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel.setLayout(null);
-
-        bBorrar.setText("BORRAR");
-        bBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBorrarActionPerformed(evt);
-            }
-        });
-        panel.add(bBorrar);
-        bBorrar.setBounds(860, 290, 75, 23);
 
         tablaJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,7 +88,7 @@ public class Tabla extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaJugadores);
 
         panel.add(jScrollPane1);
-        jScrollPane1.setBounds(740, 10, 200, 100);
+        jScrollPane1.setBounds(0, 560, 880, 150);
 
         bModificar.setText("MODIFICAR");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,13 +97,12 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bModificar);
-        bModificar.setBounds(750, 290, 91, 23);
+        bModificar.setBounds(410, 770, 110, 40);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("NOMBRE");
         panel.add(jLabel1);
-        jLabel1.setBounds(750, 220, 42, 14);
-        panel.add(tNombre);
-        tNombre.setBounds(750, 250, 88, 20);
+        jLabel1.setBounds(410, 720, 120, 40);
 
         bMostrar.setText("MOSTRAR");
         bMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -121,24 +111,39 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bMostrar);
-        bMostrar.setBounds(790, 130, 110, 20);
+        bMostrar.setBounds(110, 740, 180, 40);
+
+        tNombre.setText("adasd");
+        panel.add(tNombre);
+        tNombre.setBounds(538, 730, 120, 20);
+
+        bBorrar.setText("BORRAR");
+        bBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBorrarActionPerformed(evt);
+            }
+        });
+        panel.add(bBorrar);
+        bBorrar.setBounds(550, 770, 110, 40);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Christian\\Documents\\Joc-nou-Snake-Facebook-messenger-2017-1.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
         panel.add(jLabel2);
-        jLabel2.setBounds(0, -10, 940, 570);
+        jLabel2.setBounds(-80, 0, 960, 550);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
