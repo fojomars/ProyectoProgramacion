@@ -158,6 +158,8 @@ public class SnakeGame extends JFrame implements KeyListener {
             fruit.newFruit();
             snake.crecimientoSnake();
             Score += 10;
+            Sonido.SonidoComer son = new Sonido.SonidoComer();
+            son.start();
         }
 
         else if (snake.getLargo().get(0).x < 0 || snake.getLargo().get(0).x > 39 || snake.getLargo().get(0).y < 1 || snake.getLargo().get(0).y > 29) {

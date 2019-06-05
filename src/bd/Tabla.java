@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author junio
  */
 public class Tabla extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Tabla
      */
@@ -66,7 +66,10 @@ public class Tabla extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(300, 500));
+        setResizable(false);
 
+        panel.setPreferredSize(new java.awt.Dimension(100, 400));
         panel.setLayout(null);
 
         tablaJugadores.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,7 +91,7 @@ public class Tabla extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaJugadores);
 
         panel.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 540, 730, 70);
+        jScrollPane1.setBounds(20, 230, 250, 70);
 
         bModificar.setText("MODIFICAR");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,12 +100,12 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bModificar);
-        bModificar.setBounds(320, 680, 110, 40);
+        bModificar.setBounds(20, 440, 110, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("NOMBRE");
         panel.add(jLabel1);
-        jLabel1.setBounds(310, 630, 120, 40);
+        jLabel1.setBounds(20, 380, 120, 40);
 
         bMostrar.setText("MOSTRAR");
         bMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +114,9 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bMostrar);
-        bMostrar.setBounds(70, 640, 180, 40);
-
-        tNombre.setText("adasd");
+        bMostrar.setBounds(50, 320, 180, 40);
         panel.add(tNombre);
-        tNombre.setBounds(460, 640, 120, 20);
+        tNombre.setBounds(150, 390, 110, 20);
 
         bBorrar.setText("BORRAR");
         bBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,27 +125,27 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
         panel.add(bBorrar);
-        bBorrar.setBounds(470, 680, 110, 40);
+        bBorrar.setBounds(150, 440, 110, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\junio\\Desktop\\SnakePlay\\ProyectoProgramacion\\src\\Imagen\\Snake.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/images.jpg"))); // NOI18N
         panel.add(jLabel2);
-        jLabel2.setBounds(0, 70, 720, 420);
+        jLabel2.setBounds(20, 40, 250, 180);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,7 +233,7 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBorrar;
     private javax.swing.JButton bModificar;

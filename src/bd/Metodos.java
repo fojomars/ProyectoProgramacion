@@ -52,7 +52,7 @@ public class Metodos {
      * la borra
      */
     public void crearTablaJugador() {
-        String sql1 = "DROP TABLE IF EXISTS datos;\n";
+//        String sql1 = "DROP TABLE IF EXISTS datos;\n";
         String sql2 = "CREATE TABLE IF NOT EXISTS datos (\n"
                 + "id integer PRIMARY KEY,\n"
                 + "nombre text NOT NULL,\n"
@@ -60,7 +60,7 @@ public class Metodos {
                 + ");";
         try (Connection conn = this.conectar();
                 Statement stmt = conn.createStatement()) {
-            stmt.execute(sql1);
+//            stmt.execute(sql1);
             stmt.execute(sql2);
             System.out.println("Tabla creada con exito");
         } catch (SQLException e) {
@@ -85,7 +85,7 @@ public class Metodos {
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Jugador registrado correctamente");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al introducir los datos o puede que el id ya este selecionado");
+            JOptionPane.showMessageDialog(null, "Error al introducir los datos o puede que el id ya exista");
         }
         
     }
@@ -100,9 +100,9 @@ public class Metodos {
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Cliente eliminado con éxito");
+            JOptionPane.showMessageDialog(null, "Jugador eliminado con éxito");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar el cliente");
+            JOptionPane.showMessageDialog(null, "Error al eliminar el jugador");
         }
     }
     
